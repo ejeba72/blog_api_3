@@ -1,0 +1,11 @@
+{
+  "name": "blog_api_3",
+  "version": "1.0.0",
+  "description": "This is me taking my time to try out the exam project all over again. My initial plan was to do this, immediately after the 2nd semester exams in November of 2022. But my earlier attempts failed, due to circumstances beyond my control. In addition, Altschool gave us a compulsory \"holiday_challenge\", which would have afforded me the opportunity to try out the exam project again. Alas, as it turned out, the so-called holiday period was choked up for me, as I was contrained to attend to various personal and domestic tasks that I had been procrastinating in the course of 2022. Missing out on the holiday challenge is really painful to me. Anyway, here I am now, determined to go ahead with what I believe will enable me to be a more proficient programmer (although, I may have missed out on valuable marks in altschool assessment).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Emmanuel Eni",
+  "license": "ISC"
+}
