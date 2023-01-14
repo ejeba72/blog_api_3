@@ -1,12 +1,17 @@
+const { config } = require('dotenv');
+const { healthRoute } = require('./routes/healthRoute');
 const express = require('express');
 
 const app = express();
 
-app.get('/', (req, res) => {
-  console.log(`health check request`)
-  res.send(`server is in good health ;)`)
-})
+// DOTENV CONFIG AND MONGODB CONNECTION
+config()
 
-app.listen(1111, () => {
+const PORT = process.env.PORT
+
+// MIDDLEWARE 
+app.use('/', healthRoute)
+
+app.listen(PORT, () => {
   console.log(`Server is attentively listening to request at port 1111`);
 })
