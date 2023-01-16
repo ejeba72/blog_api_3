@@ -1,6 +1,9 @@
+const { Blog } = require('../Models/BlogModel')
+
 async function getListLogic(req, res) {
   console.log('get list request')
-  res.send(`hello, world`)
+  const blogList =  await Blog.find()
+  res.send(blogList)
 }
 
 module.exports = { getListLogic }
