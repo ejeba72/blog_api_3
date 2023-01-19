@@ -6,4 +6,4 @@ async function getAllLogic(req, res) {
   res.send(allUsers);
 }
 
-module.exports = { getAllLogic }
+// module.exports = { getAllLogic }

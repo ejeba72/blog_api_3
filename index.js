@@ -2,7 +2,7 @@ const express = require('express');
 const { config } = require('dotenv');
 const { healthRoute } = require('./routes/healthRoute');
 const { generalRoute } = require('./routes/generalRoute');
-const { userRoute } = require('./routes/userRoute');
+// const { userRoute } = require('./routes/userRoute');
 const { mongoDB } = require('./database/connection');
 
 // DOTENV CONFIG AND MONGODB CONNECTION
@@ -14,10 +14,32 @@ const PORT = process.env.PORT;
 const apiV1 = '/api/v1';
 
 // MIDDLEWARE 
-app.use(express.json);
+// app.use(express.json);
 app.use('/', healthRoute)
 app.use(`${apiV1}/general`, generalRoute)
-app.use(`${apiV1}/users`, userRoute)
+// app.use(`${apiV1}/users`, userRoute)
+
+
+
+// const { Blog } = require('./Models/BlogModel');
+// const { User } = require('./Models/UserModel');
+// app.get('/', async (req, res) => {
+//   try {
+//     console.log('get request');
+//     const  hello = await User.find();
+//     res.send(hello);
+//   } catch (err) {
+//     console.log(err.message);
+//     res.send(err.message)
+//   }
+// })
+
+// app.get('/', async (req, res) => {
+//   console.log(`get request`);
+//   const hello = await User;
+//   res.send(hello)
+// })
+
 
 app.listen(PORT, () => {
   console.log(`Server is attentively listening to request at port ${PORT}`);

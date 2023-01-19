@@ -1,6 +1,11 @@
 function getHealthLogic (req, res) {
-  console.log(`health check request`)
-  res.send(`server is in good health ;)`)
+  try {
+    console.log(`health check request`);
+    res.send(`server is in good health ;)`);
+  } catch (err) {
+    console.log('err.message');
+    res.send('err.message');
+  }
 }
 
 module.exports = { getHealthLogic }
