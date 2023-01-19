@@ -20,3 +20,6 @@ USER SCHEMA
   * not be more than 50 char
    
 
+TO-DO LIST:
+  1. set up a dev route and refactor your code accordingly.
+  1. develop your user model
