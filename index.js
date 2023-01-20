@@ -1,6 +1,7 @@
 const express = require('express');
 const { config } = require('dotenv');
 const { healthRoute } = require('./routes/healthRoute');
+const { devRoute } = require('./routes/devRoute');
 const { generalRoute } = require('./routes/generalRoute');
 const { userRoute } = require('./routes/userRoute');
 const { mongoDB } = require('./database/connection');
@@ -15,9 +16,10 @@ const apiV1 = '/api/v1';
 
 // MIDDLEWARE 
 app.use(express.json());
-app.use('/', healthRoute)
-app.use(`${apiV1}/general`, generalRoute)
-app.use(`${apiV1}/users`, userRoute)
+app.use('/', healthRoute);
+app.use('/dev', devRoute);  // For development purpose only
+app.use(`${apiV1}/general`, generalRoute);
+app.use(`${apiV1}/users`, userRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is attentively listening to request at port ${PORT}`);
