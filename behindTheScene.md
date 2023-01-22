@@ -22,5 +22,26 @@ USER SCHEMA
    
 
 TO-DO LIST:
-  1. set up a dev route and refactor your code accordingly.
+  1. (DONE) set up a dev route and refactor your code accordingly.
   1. develop your user model
+    * firstName property = {
+      dataType: string
+      required: 'Hey, your first name is required!'
+      trim: "first_name should be string"
+      maximum_length: "50 char"
+    }
+    * lastName property = "same as first_name above"
+    * email property = {    
+      type
+      unique
+      trim
+      lowercase
+      require
+      validate
+    }
+    * password property = {
+      datatype
+      required
+      minLength
+      maxLength
+    }
