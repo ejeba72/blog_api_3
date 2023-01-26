@@ -35,14 +35,15 @@ const blogSchema = new Schema(
     body: {
       type: String,
       required: true
-    }
-    /* 
-    title, description, tags, author, timestamp, state, readCount, readingTime, body
-    */
+    },
+    // user: {
+    //   type: String,
+    //   required: true
+    // }
   },
   { timestamps: true }
 )
 
-const Blog = model('Blog', blogSchema);
+const BlogModel = model('Blog', blogSchema);
 
-module.exports = { Blog }
+module.exports = { BlogModel }

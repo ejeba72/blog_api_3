@@ -5,6 +5,7 @@ const { devRoute } = require('./routes/devRoute');
 const { generalRoute } = require('./routes/generalRoute');
 const { userRoute } = require('./routes/userRoute');
 const { mongoDB } = require('./database/connection');
+const { editRoute } = require('./routes/editRoute');
 
 // DOTENV CONFIG AND MONGODB CONNECTION
 config();
@@ -20,6 +21,7 @@ app.use('/', healthRoute);
 app.use('/dev', devRoute);  // For development purpose only
 app.use(`${apiV1}/general`, generalRoute);
 app.use(`${apiV1}/users`, userRoute);
+app.use(`${apiV1}/edit`, editRoute)
 
 app.listen(PORT, () => {
   console.log(`Server is attentively listening to request at port ${PORT}`);
