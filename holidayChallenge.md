@@ -12,3 +12,6 @@ I kind of had a very vague idea of what it may be. But was even more clueless on
 As I was writing the try-catch statement and refactoring my code, it dawn on me that the reason why the code outside the conditional block was been executed after the code within the conditional block has been executed (when the condition was met), was because of the absence of a return statement.
 I also had the intuition that a try-catch statement was not necessary, at least with the presence of a return keyword. In addition, the condiition statement itself, is kind of, effectively playing a similar role to that the catch part of the try-catch statement is doing.
 I added the return keyword and tested the delete request multiple times with resources that had already been deleted, and the bug was non-existent. Hip, hip, hip, HURRAY!!!
+
+12:44 mon jan30 2023
+A reason why I'm apparently slow is because I don't just want this to be another academic exercise. Instead I'm committing myself to satisfy my curiousity and deepen my understanding with doing loads of experiments in between commits.

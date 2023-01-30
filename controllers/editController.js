@@ -99,9 +99,46 @@ async function deleteBlogLogic(req, res) {
   }
 }
 
+// GET LIST LOGIC
+/* 
+STEPS:
+1. Determine the fields that will make up the list for each blog. In this case, it is reasonable that it should be the title and author.
+1. Retrieve all the blogs from the blog collection, in the database,
+1. Use the map method to form a blogList consisting of title and author for each blog on the list.
+1. send a response of the blogList to the client.
+*/
+async function getListLogic(req, res) {
+  try {
 
+    const { page, lim } = req.query;
 
-module.exports = { postBlogLogic, putBlogLogic, deleteBlogLogic }
+    /* 
+    PLEASE NOTE: page is the page you wish to see, lim is th number of items per page.
+    Furthermore, I perceive that the use of the limit and skip methods for pagination is more or less improvisation on the part of the programmer. This is exciting to me!
+    */
+    
+    const blogs = await BlogModel.find().skip((page - 1) * lim).limit(lim);
+
+    const blogList = blogs.map(({ title, author }) => {
+      return { title, author }
+    })
+
+    const resMessage = {
+      message: `Get request is successful`,
+      query: req.query,
+      blogList
+    }
+
+    console.log(resMessage);
+    res.status(200).send(resMessage);
+
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send(err.message);
+  }
+}
+
+module.exports = { postBlogLogic, putBlogLogic, deleteBlogLogic, getListLogic }
 
 
 
