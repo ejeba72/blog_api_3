@@ -1,0 +1,112 @@
+[
+  {
+    _id: new ObjectId("63cfe355a276f588eca974f3"),
+    title: 'Nigeria 2023 elections',
+    tags: [ 'elections' ],
+    author: 'Osakpolor Osazuwa',
+    state: 'draft',
+    readCount: 0,
+    body: "In this forthcoming elections, Nigerians must vote their conscience, and elect credible, competent leaders that have character. We cannot afford to continue with the type of leadership that we've had since 1999.",
+    createdAt: 2023-01-24T13:55:33.034Z,
+    updatedAt: 2023-01-24T13:55:33.034Z,
+    __v: 0
+  },
+  {
+    _id: new ObjectId("63d00143782d7fda14a41bdb"),
+    title: 'Peter Obi, the most promising presidential aspirant',
+    tags: [ 'Peter Obi' ],
+    author: 'Ruth Abiola',
+    state: 'draft',
+    readCount: 0,
+    body: 'Peter Obi is clearly the most promising presidential apirant! Nigerians must do all it takes to vote him. Otherwise, the painful and difficult status quo will remain the same for another 4 or even 8 years!',
+    createdAt: 2023-01-24T16:03:15.442Z,
+    updatedAt: 2023-01-24T16:03:15.442Z,
+    __v: 0
+  },
+  {
+    _id: new ObjectId("63d1040589422e4959a4fb08"),
+    title: 'PDAPC has woefully failed us',
+    author: 'Ruth Abiola',
+    user: '63d026e6d186a54a76049b1d',
+    state: 'draft',
+    readCount: 0,
+    readingTime: 1,
+    tags: [ 'elections' ],
+    body: 'It is even obvious to the blind that both PDP and APC have woefully failed us for the past 24 years. It is time for patriotic Nigerian to challenge the status quo.',
+    createdAt: 2023-01-25T10:27:17.170Z,
+    updatedAt: 2023-01-25T10:27:17.170Z,
+    __v: 0
+  },
+  {
+    _id: new ObjectId("63d18028a5d6a39bd911d933"),
+    title: 'A new nigeria is POssible',
+    tags: [ 'elections', 'Nigeria', 'politics' ],
+    author: 'Ruth Abiola',
+    state: 'published',
+    readCount: 0,
+    body: 'Yes! With credible leadership and a followership that holds their leaders accountable, a new Nigeria is POssible. This is why Nigerians should go to the polling units in their numbers to vote out corrupt leadership, and vote in credible, accountable and capable leadership.',
+    createdAt: 2023-01-25T19:16:56.022Z,
+    updatedAt: 2023-01-29T18:27:10.740Z,
+    __v: 0
+  },
+  {
+    _id: new ObjectId("63d19a509a6667876a33a3a5"),
+    title: 'Emmanuel, the bad ass, hardcore petrohead',
+    tags: [ 'motor sport', 'Formula 1', 'personality' ],
+    author: 'Joshua Akpos',
+    state: 'draft',
+    readCount: 0,
+    body: "No be small thing o! Emmanuel is indeed a bad ass petrohead to the core! He has even written a book on motor sport titled, 'Fresh Ideas, for levelling the playing field in Formula 1 and beyond'. What is more, the way he drives a car is aggressive and competitive. In fact ehn, na fire, fire! And he is very jealous of his space, that it a formidable challenge to overtake him when he doesn't want you to. If he had the resources, he would have become a championship-winning professional racing driver!",
+    createdAt: 2023-01-25T21:08:32.253Z,
+    updatedAt: 2023-01-25T21:08:32.253Z,
+    __v: 0
+  },
+  {
+    _id: new ObjectId("63d247f6083661b52c4e5a75"),
+    title: 'How to create your own website',
+    tags: [ 'website', 'programming', 'web development' ],
+    author: 'Joshua Akpos',
+    state: 'published',
+    readCount: 0,
+    body: 'Broda Emmanuel of the most high God! No, not broda Shaggi. Yes, that broda Emma who happens to be a bad ass petrohead, wrote an exhaustive and insightful article on how non-techie can create their own website by himself or herself. You can read the article with this link; https://sites.google.com/view/createyourownwebsite101.',
+    createdAt: 2023-01-26T09:29:26.248Z,
+    updatedAt: 2023-01-26T09:29:26.248Z,
+    __v: 0
+  },
+  {
+    _id: new ObjectId("63d606610c4329e02275030e"),
+    title: 'Fresh Ideas',
+    tags: [ 'Motor Sport', 'Formula 1', 'technological innovation' ],
+    author: 'Joshua Akpos',
+    state: 'published',
+    readCount: 0,
+    body: "A prominent motor sport personality and the greatest racing driver of all time, Emmanuel Ejeba, has written a motor sport book titled 'Fresh Ideas'. The book effectively addresses all the challenges in F1 and beyond.",
+    createdAt: 2023-01-29T05:38:41.161Z,
+    updatedAt: 2023-01-29T05:38:41.161Z,
+    __v: 0
+  },
+  {
+    _id: new ObjectId("63d6087ff25df1b00868d262"),
+    title: 'Fresh Ideas, for levelling the playing field in Formula and beyond',
+    tags: [ 'Motor Sport', 'Formula 1', 'technological innovation' ],
+    author: 'Joshua Akpos',
+    state: 'published',
+    readCount: 0,
+    body: "A prominent motor sport personality and the greatest racing driver of all time, Emmanuel Ejeba, has written a motor sport book titled 'Fresh Ideas'. The book effectively addresses all the challenges in F1 and beyond.",
+    createdAt: 2023-01-29T05:47:43.772Z,
+    updatedAt: 2023-01-29T05:47:43.772Z,
+    __v: 0
+  },
+  {
+    _id: new ObjectId("63d608ebfae718b67109d8fe"),
+    title: 'Fresh Ideas, for levelling the playing field in Formula and beyond.',
+    tags: [ 'Motor Sport', 'Formula 1', 'technological innovation' ],
+    author: 'Joshua Akpos',
+    state: 'published',
+    readCount: 0,
+    body: "A prominent motor sport personality and the greatest racing driver of all time, Emmanuel Ejeba, has written a motor sport book titled 'Fresh Ideas'. The book effectively addresses all the challenges in F1 and beyond.",
+    createdAt: 2023-01-29T05:49:31.073Z,
+    updatedAt: 2023-01-29T05:49:31.073Z,
+    __v: 0
+  }
+]

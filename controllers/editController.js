@@ -5,7 +5,7 @@ const { BlogModel } = require("../Models/BlogModel");
 /* 
 STEPS:
 1. use the mongoose Model to create a mongodb document with the req.body as the argument for the Model. (Note that, the mongoose Model is a js class, while the mongodb document is a js object.)
-2. save the document to mongodb. (Note that, the document would be saved in the mongodb collection that is specified as a params in the mongodb URI that is used to connect your application to Mongodb database.)
+1. save the document to mongodb. (Note that, the document would be saved in the mongodb collection that is specified as a params in the mongodb URI that is used to connect your application to Mongodb database.)
 */
 async function postBlogLogic(req, res) {
   try {
@@ -70,11 +70,38 @@ STEPS:
 1. employ the mongoose "deleteOne" method to delete the specified blog, passing the id as an argument to the "deleteOne" method.
 1. send a response to the client, indicating that the desired blog has been successfully deleted.
 */
-async function deleteBlogLogic(req, res) {}
+async function deleteBlogLogic(req, res) {
+  try {
+
+    const blogDocument = await BlogModel.findOne({_id: Types.ObjectId(req.params.id)});
+
+    if (!blogDocument) {
+      console.log('That blog does not exist or may have already been deleted');
+      res.status(404).send('That blog does not exist or may have already been deleted');
+      return;
+    }
+    
+    await BlogModel.deleteOne({_id: Types.ObjectId(req.params.id)});
+
+    const blogCollection = await BlogModel.find();
+
+    const resMessage = {
+      message: 'Blog deleted successfully',
+      availableBlogs: `You have ${blogCollection.length} blogs posts left.`
+    }
+
+    console.log(resMessage);
+    res.status(200).send(resMessage);
+
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send(err.message);
+  }
+}
 
 
 
-module.exports = { postBlogLogic, putBlogLogic }
+module.exports = { postBlogLogic, putBlogLogic, deleteBlogLogic }
 
 
 
