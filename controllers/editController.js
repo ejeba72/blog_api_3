@@ -110,7 +110,7 @@ STEPS:
 async function getListLogic(req, res) {
   try {
 
-    const { page, lim } = req.query;
+    const { page, lim, state } = req.query;
 
     /* 
     PLEASE NOTE: page is the page you wish to see, lim is th number of items per page.
@@ -122,6 +122,20 @@ async function getListLogic(req, res) {
     const blogList = blogs.map(({ title, author }) => {
       return { title, author }
     })
+
+    if(state==='published') {
+      const publishedBlog = blogs.filter((blog) => {
+        blog.state === 'published';
+      })
+      return [ console.log(publishedBlog), res.status(200).send(publishedBlog) ]
+    }
+
+    if(state==='draft') {
+      const draft = blogs.filter((blog) => {
+        blog.state === 'draft';
+      })
+      return [ console.log(draft), res.status(200).send(draft) ]
+    }
 
     const resMessage = {
       message: `Get request is successful`,
