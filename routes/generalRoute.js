@@ -1,8 +1,8 @@
 const { Router } = require('express');
 const { getListLogic } = require('../controllers/generalController');
 
-const route = Router();
+const router = Router();
 
+router.route('/').get(getListLogic);
 
-
-module.exports = { generalRoute: route}
+module.exports = { generalRoute: router}

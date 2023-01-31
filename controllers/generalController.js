@@ -1,8 +1,44 @@
-const { Blog } = require('../Models/BlogModel')
+const { Blog, BlogModel } = require('../Models/BlogModel')
 
-async function getListLogic(req, res) {}
+async function getListLogic(req, res) {
+  
+  const blogList = await BlogModel.find({state: 'published'});
+
+  console.log(blogList);
+  res.status(200).send(blogList);
+
+}
 
 module.exports = { getListLogic }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
