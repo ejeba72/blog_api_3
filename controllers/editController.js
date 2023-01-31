@@ -105,49 +105,57 @@ STEPS:
 1. Determine the fields that will make up the list for each blog. In this case, it is reasonable that it should be the title, author as well as state, since it would be filterable by state.
 1. Retrieve all the blogs from the blog collection, in the database,
 1. Use the map method to form a blogList consisting of title, author and state for each blog on the list.
-1. send a response of the blogList to the client.
+1. Use the filter method to filter blogList by state. There would be three filter groups:
+  * published state,
+  * draft state, and
+  * the group that filters requests with incorrect state query.
+1. send an appropriate response to the client for each filter group.
 */
 async function getListLogic(req, res) {
   try {
 
     const { page, lim, state } = req.query;
-
-    let blogList;
-    let stateMessage;
-    if(state !== 'published' || state !== 'draft') {
-      blogList = `There is no blog with state = ${state}.`
-      stateMessage = `Heads up! Something is not right. The state you entered, "${state}", is incorrect. State can either be "draft" or "published".`;
-    }
-
-    /* 
-    PLEASE NOTE: page is the page you wish to see, lim is th number of items per page.
-    Furthermore, I perceive that the use of the limit and skip methods for pagination is more or less improvisation on the part of the programmer. This is exciting to me!
-    */
     
     const blogs = await BlogModel.find().skip((page - 1) * lim).limit(lim);
 
-    blogList = blogs.map(({ title, author, state }) => {
+    /* 
+    PLEASE NOTE: page is the page you wish to see, lim is th number of items per page.
+    Furthermore, I perceive that the use of the limit and skip methods for pagination is more or less improvisation on the part of programmers. Because, pagination of web content is more or less an illusion, as oppose to actual pages in a real book or document. Been able to imaginatively improvise solution(s) is exciting to me!
+    */
+
+    const blogList = blogs.map(({ title, author, state }) => {
       return { title, author, state }
     })
+
+    const resMessage = {
+      message: `Get request is successful`,
+      query: req.query,
+      blogList
+    }
 
     if(state==='published') {
       const publishedBlog = blogList.filter((blog) => {
         return blog.state === 'published';
       })
-      blogList = publishedBlog;
+      resMessage.blogList = publishedBlog;
+      console.log(resMessage);
+      return res.status(200).send(resMessage);
     }
 
     if(state==='draft') {
       const draft = blogList.filter((blog) => {
         return blog.state === 'draft';
       })
-      blogList = draft;
+      resMessage.blogList = draft;
+      console.log(resMessage);
+      return res.status(200).send(resMessage);
     }
 
-    const resMessage = {
-      message: stateMessage || `Get request is successful`,
-      query: req.query,
-      blogList
+    if(state !== 'published' || 'draft') {
+      resMessage.blogList = `There is no blog with state = ${state}.`
+      resMessage.message = `Heads up! Something is not right. The state you entered, "${state}", is incorrect. State can either be "draft" or "published".`;
+      console.log(resMessage);
+      return res.status(400).send(resMessage);
     }
 
     console.log(resMessage);
