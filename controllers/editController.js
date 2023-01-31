@@ -104,13 +104,20 @@ async function deleteBlogLogic(req, res) {
 STEPS:
 1. Determine the fields that will make up the list for each blog. In this case, it is reasonable that it should be the title, author as well as state, since it would be filterable by state.
 1. Retrieve all the blogs from the blog collection, in the database,
-1. Use the map method to form a blogList consisting of title and author for each blog on the list.
+1. Use the map method to form a blogList consisting of title, author and state for each blog on the list.
 1. send a response of the blogList to the client.
 */
 async function getListLogic(req, res) {
   try {
 
     const { page, lim, state } = req.query;
+
+    let blogList;
+    let stateMessage;
+    if(state !== 'published' || state !== 'draft') {
+      blogList = `There is no blog with state = ${state}.`
+      stateMessage = `Heads up! Something is not right. The state you entered, "${state}", is incorrect. State can either be "draft" or "published".`;
+    }
 
     /* 
     PLEASE NOTE: page is the page you wish to see, lim is th number of items per page.
@@ -119,7 +126,7 @@ async function getListLogic(req, res) {
     
     const blogs = await BlogModel.find().skip((page - 1) * lim).limit(lim);
 
-    const blogList = blogs.map(({ title, author, state }) => {
+    blogList = blogs.map(({ title, author, state }) => {
       return { title, author, state }
     })
 
@@ -127,18 +134,18 @@ async function getListLogic(req, res) {
       const publishedBlog = blogList.filter((blog) => {
         return blog.state === 'published';
       })
-      return [ console.log(publishedBlog), res.status(200).send(publishedBlog) ]
+      blogList = publishedBlog;
     }
 
     if(state==='draft') {
       const draft = blogList.filter((blog) => {
         return blog.state === 'draft';
       })
-      return [ console.log(draft), res.status(200).send(draft) ]
+      blogList = draft;
     }
 
     const resMessage = {
-      message: `Get request is successful`,
+      message: stateMessage || `Get request is successful`,
       query: req.query,
       blogList
     }
