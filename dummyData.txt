@@ -97,7 +97,7 @@
     updatedAt: 2023-01-29T05:47:43.772Z,
     __v: 0
   },
-  {
+  ==> DELETED ==> {
     _id: new ObjectId("63d608ebfae718b67109d8fe"),
     title: 'Fresh Ideas, for levelling the playing field in Formula and beyond.',
     tags: [ 'Motor Sport', 'Formula 1', 'technological innovation' ],

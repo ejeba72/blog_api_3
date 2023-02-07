@@ -116,14 +116,14 @@ async function getListLogic(req, res) {
 
     const { page, lim, state } = req.query;
     
-    const blogs = await BlogModel.find().skip((page - 1) * lim).limit(lim);
+    const blogPage = await BlogModel.find().skip((page - 1) * lim).limit(lim);
 
     /* 
     PLEASE NOTE: page is the page you wish to see, lim is th number of items per page.
     Furthermore, I perceive that the use of the limit and skip methods for pagination is more or less improvisation on the part of programmers. Because, pagination of web content is more or less an illusion, as oppose to actual pages in a real book or document. Been able to imaginatively improvise solution(s) is exciting to me!
     */
 
-    const blogList = blogs.map(({ title, author, state }) => {
+    const blogList = blogPage.map(({ title, author, state }) => {
       return { title, author, state }
     })
 
