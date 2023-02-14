@@ -151,6 +151,11 @@ async function getListLogic(req, res) {
       return res.status(200).send(resMessage);
     }
 
+    if(!state) {
+      console.log(resMessage);
+      return res.status(200).send(resMessage);
+    }
+
     if(state !== 'published' || 'draft') {
       resMessage.blogList = `There is no blog with state = ${state}.`
       resMessage.message = `Heads up! Something is not right. The state you entered, "${state}", is incorrect. State can either be "draft" or "published".`;

@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const { config } = require('dotenv');
 const { healthRoute } = require('./routes/healthRoute');
 const { devRoute } = require('./routes/devRoute');
@@ -17,6 +18,7 @@ const apiV1 = '/api/v1';
 
 // MIDDLEWARE 
 app.use(express.json());
+app.use(cookieParser());
 app.use('/', healthRoute);
 app.use('/dev', devRoute);  // For development purpose only
 app.use(`${apiV1}/general`, generalRoute);

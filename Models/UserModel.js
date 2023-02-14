@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const { genSalt, hash, compare } = require('bcrypt');
 
 function validateEmail(email) {
   const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -36,6 +37,29 @@ const userSchema = new Schema(
   },
   { timestamps: true }
 )
+
+// USING BCRYPT TO HASH NEW USER PASSWORD BEFORE SAVING USER DATA TO DB.
+userSchema.pre('save', async function (next) {
+  const salt = await genSalt();
+  this.password = await hash(this.password, salt);
+  next();
+});
+
+// COMPARING "LOGIN PASSWORD" WITH "DATABASE PASSWORD"
+userSchema.statics.login = async function (email, password) {
+  const user = await this.findOne({ email });
+  if (!user) {
+    throw Error(`Invalid email and password.`);
+  }
+
+  const comparePwd = await compare(password, user.password);
+
+  if (!comparePwd) {
+    throw Error(`Invalid email and password.`);
+  }
+
+  return user;
+}
 
 const UserModel = model('User', userSchema)
 

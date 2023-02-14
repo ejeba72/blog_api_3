@@ -1,8 +1,15 @@
-const { Router } = require("express");
-const { getAllLogic } = require("../controllers/userController");
+const { Router } = require('express');
+const {
+  signupLogic,
+  loginLogic,
+  logoutLogic,
+} = require('../controllers/userController');
 
-const route = Router();
+const router = Router();
 
+// SIGN UP ROUTE
+router.post('/signup', signupLogic);
+router.post('/login', loginLogic);
+router.get('/logout', logoutLogic);
 
-
-module.exports = { userRoute: route }
+module.exports = { userRoute: router };
