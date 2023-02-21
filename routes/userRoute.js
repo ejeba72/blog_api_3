@@ -3,6 +3,7 @@ const {
   signupLogic,
   loginLogic,
   logoutLogic,
+  deleteLogic,
 } = require('../controllers/userController');
 
 const router = Router();
@@ -11,5 +12,6 @@ const router = Router();
 router.post('/signup', signupLogic);
 router.post('/login', loginLogic);
 router.get('/logout', logoutLogic);
+router.delete('/:id', deleteLogic)
 
 module.exports = { userRoute: router };

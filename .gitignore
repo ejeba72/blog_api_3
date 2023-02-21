@@ -3,3 +3,5 @@ node_modules
 coverage
 devRoute.js
 devController.js
+.DS_Store
+

@@ -1,5 +1,5 @@
 const request = require('supertest');
-const { app } = require('../app');
+const { app } = require('../../app');
 
 describe('test for the edit route', () => {
   test('unauthorized get list request', async () => {

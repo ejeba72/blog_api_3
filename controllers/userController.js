@@ -1,5 +1,6 @@
 const { config } = require('dotenv');
 const { sign } = require('jsonwebtoken');
+const { Types } = require('mongoose');
 const { UserModel } = require('../Models/UserModel');
 
 // DOTENV CONFIG
@@ -80,4 +81,31 @@ async function logoutLogic(req, res) {
   }
 }
 
-module.exports = { signupLogic, loginLogic, logoutLogic };
+// DELETE LOGIC
+async function deleteLogic(req, res) {
+  try {
+
+    const userDocument = await UserModel.findOne({_id: Types.ObjectId(req.params.id)});
+
+    if (!userDocument) {
+      console.log('That user does not exist or may have already been deleted');
+      res.status(404).send('That user does not exist or may have already been deleted');
+      return;
+    }
+    
+    await UserModel.deleteOne({_id: Types.ObjectId(req.params.id)});
+
+    const resMessage = {
+      message: `Dear Mr ${userDocument.firstName} ${userDocument.lastName}, your user account has been successfully deleted.`,
+    }
+
+    console.log(resMessage);
+    res.status(200).send(resMessage);
+
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send(err.message);
+  }
+}
+
+module.exports = { signupLogic, loginLogic, logoutLogic, deleteLogic };
